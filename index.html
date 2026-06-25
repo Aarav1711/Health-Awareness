@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="violet">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Health Awareness for Stress and Anxiety in Students – Signs, coping tools, breathing exercises, self-check quiz and resources."/>
+  <title>MindEase | Health Awareness for Stress & Anxiety in Students</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ── HEADER / NAVBAR ── -->
+<header class="site-header">
+  <nav class="navbar">
+
+    <!-- LEFT: Logo -->
+    <div class="nav-logo">
+      <div class="logo-mark">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+          <circle cx="19" cy="19" r="19" fill="url(#lg)"/>
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="38" y2="38"><stop stop-color="var(--c1)"/><stop offset="1" stop-color="var(--c2)"/></linearGradient></defs>
+          <text x="8" y="26" font-size="20" fill="white">&#x1F9E0;</text>
+        </svg>
+      </div>
+      <div class="logo-text-wrap">
+        <span class="logo-title">Mind<span class="accent">Ease</span></span>
+        <span class="logo-sub">Student Wellness</span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Nav links & Theme controls -->
+    <div class="nav-right">
+      <div class="nav-links">
+        <button class="nav-link-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})">🏠 Home</button>
+        <button class="nav-link-btn" onclick="document.getElementById('tabs-section').scrollIntoView({behavior:'smooth'})">🧭 Explore</button>
+      </div>
+      <div class="theme-divider" style="margin: 0 1rem;"></div>
+      <div class="nav-theme-controls">
+        <span class="theme-label">Theme:</span>
+        <button class="theme-swatch" data-theme="violet" title="Violet" style="background:linear-gradient(135deg,#7c3aed,#ec4899)"></button>
+        <button class="theme-swatch" data-theme="ocean"  title="Ocean"  style="background:linear-gradient(135deg,#0ea5e9,#06b6d4)"></button>
+        <button class="theme-swatch" data-theme="forest" title="Forest" style="background:linear-gradient(135deg,#16a34a,#84cc16)"></button>
+        <button class="theme-swatch" data-theme="sunset" title="Sunset" style="background:linear-gradient(135deg,#f97316,#ef4444)"></button>
+        <button class="theme-swatch" data-theme="rose"   title="Rose"   style="background:linear-gradient(135deg,#e11d48,#f43f5e)"></button>
+        <button class="theme-swatch" data-theme="bw"     title="B&W"    style="background:linear-gradient(135deg,#111,#eee);border:1px solid #888"></button>
+        <div class="theme-divider"></div>
+        <button class="mode-toggle" id="modeToggle">Dark Mode</button>
+      </div>
+    </div>
+
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-bg-blobs">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="topic-badge animate-pop">📚 Health Awareness</div>
+      <h1 class="hero-title">
+        <span class="animate-word">Stress</span>
+        <span class="animate-word delay1">&amp;</span>
+        <span class="animate-word delay2">Anxiety</span>
+        <br/>
+        <span class="animate-word delay3 accent-text">in Students</span>
+      </h1>
+      <p class="hero-desc animate-fade">Understanding, recognising, and overcoming mental health challenges. You are not alone — and help is here for everyone.</p>
+      <div class="hero-btns animate-fade delay2">
+        <button class="btn-primary" onclick="switchTab('quiz')">Take Self-Check Quiz 📝</button>
+        <button class="btn-outline" onclick="switchTab('breathing')">Try Breathing Exercise 🌬️</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat animate-counter" data-val="75">
+          <span class="hstat-num" id="hstat0">0</span><span class="hstat-sym">%</span>
+          <span class="hstat-lbl">feel overwhelmed</span>
+        </div>
+        <div class="hstat animate-counter" data-val="33">
+          <span class="hstat-num" id="hstat1">0</span><span class="hstat-sym">%</span>
+          <span class="hstat-lbl">have anxiety symptoms</span>
+        </div>
+        <div class="hstat animate-counter" data-val="80">
+          <span class="hstat-num" id="hstat2">0</span><span class="hstat-sym">%</span>
+          <span class="hstat-lbl">never seek help</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image animate-float">
+      <img src="images/hero.png" alt="Student meditating calmly" class="hero-img"/>
+      <div class="img-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── AWARENESS STRIP ── -->
+<section class="awareness-strip">
+  <div class="strip-inner">
+    <div class="strip-card reveal-left">
+      <img src="images/students.png" alt="Students feeling stressed" class="strip-img"/>
+      <div>
+        <h3>Why It Matters</h3>
+        <p>Academic stress peaks during exams, deadlines, and transitions. Unmanaged stress can spiral into anxiety disorders, depression, and burnout — all preventable with the right tools.</p>
+      </div>
+    </div>
+    <div class="strip-card flip reveal-right">
+      <div>
+        <h3>The Silent Epidemic</h3>
+        <p>Most students suffer in silence. Campus counselling is underutilised. By raising awareness, we empower students to recognise signs and take action early — before it becomes a crisis.</p>
+      </div>
+      <img src="images/brain.png" alt="Brain health" class="strip-img"/>
+    </div>
+  </div>
+</section>
+
+<!-- ── TAB NAVIGATION ── -->
+<section id="tabs-section" class="tabs-section">
+  <nav class="tab-nav" id="tabNav">
+    <button class="tab-btn active" data-tab="overview">📋 Overview</button>
+    <button class="tab-btn" data-tab="signs">🔍 Signs</button>
+    <button class="tab-btn" data-tab="causes">⚡ Causes</button>
+    <button class="tab-btn" data-tab="coping">🛡️ Coping</button>
+    <button class="tab-btn" data-tab="breathing">🌬️ Breathe</button>
+    <button class="tab-btn" data-tab="quiz">📝 Self-Check</button>
+    <button class="tab-btn" data-tab="resources">📞 Get Help</button>
+  </nav>
+
+  <main class="tab-content-area">
+
+    <!-- OVERVIEW -->
+    <section class="tab-panel active" id="tab-overview">
+      <div class="section-header">
+        <div class="sh-badge">📋 Overview</div>
+        <h2 class="sh-title">What Are Stress &amp; Anxiety?</h2>
+        <p class="sh-desc">Understanding the difference is the first step to managing them.</p>
+      </div>
+      <div class="cards-grid-3">
+        <div class="info-card ic-blue reveal">
+          <div class="ic-icon">😰</div>
+          <h3>Stress</h3>
+          <p>A normal physiological response to external demands — exams, deadlines, social pressures. Stress fades once the trigger is resolved.</p>
+          <ul class="ic-list">
+            <li>Short-term &amp; situational</li><li>Linked to a clear cause</li>
+            <li>Can motivate action</li><li>Disappears after resolution</li>
+          </ul>
+        </div>
+        <div class="info-card ic-purple reveal">
+          <div class="ic-icon">😟</div>
+          <h3>Anxiety</h3>
+          <p>Persistent, excessive worry or fear that remains even without a clear trigger. Anxiety can interfere with daily life if untreated.</p>
+          <ul class="ic-list">
+            <li>Ongoing and persistent</li><li>Often without a clear cause</li>
+            <li>Causes avoidance behaviour</li><li>May need professional support</li>
+          </ul>
+        </div>
+        <div class="info-card ic-teal reveal">
+          <div class="ic-icon">⚖️</div>
+          <h3>Why It Matters</h3>
+          <p>Both affect academic performance, physical health, and social wellbeing. Recognising which you face shapes how you respond.</p>
+          <ul class="ic-list">
+            <li>Affects 75% of students</li><li>Can lead to depression</li>
+            <li>Treatable &amp; manageable</li><li>Early awareness = better outcomes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="big-info-banner reveal">
+        <div class="bib-icon">💡</div>
+        <div>
+          <h4>Did you know?</h4>
+          <p>The World Health Organisation identifies depression and anxiety as leading causes of disability worldwide. Students aged 18–24 are among the highest-risk groups. Recognising early signs can prevent long-term mental health conditions.</p>
+        </div>
+      </div>
+
+      <div class="overview-img-row reveal">
+        <img src="images/students.png" alt="Students studying under stress" class="ov-img"/>
+        <div class="ov-text">
+          <h3>The Student Experience</h3>
+          <p>From the moment students enter college or university, they face a rapid increase in responsibilities — academic workload, social navigation, financial pressures, and future planning all simultaneously.</p>
+          <p style="margin-top:1rem">This creates a perfect storm for chronic stress. The brain's threat-detection system (amygdala) stays activated, flooding the body with cortisol and adrenaline — affecting memory, decision-making, immune response, and sleep.</p>
+          <div class="ov-tags">
+            <span class="tag">📉 GPA impact</span>
+            <span class="tag">💤 Sleep disruption</span>
+            <span class="tag">🤝 Social withdrawal</span>
+            <span class="tag">🧪 Hormonal changes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-section reveal">
+        <h3 class="tl-title">The Stress Cycle</h3>
+        <div class="timeline-steps">
+          <div class="t-step"><div class="t-dot">1</div><strong>Trigger</strong><span>Assignment, exam, conflict</span></div>
+          <div class="t-arrow">→</div>
+          <div class="t-step"><div class="t-dot">2</div><strong>Response</strong><span>Heart races, worry begins</span></div>
+          <div class="t-arrow">→</div>
+          <div class="t-step"><div class="t-dot">3</div><strong>Coping</strong><span>Healthy or unhealthy choice</span></div>
+          <div class="t-arrow">→</div>
+          <div class="t-step"><div class="t-dot">4</div><strong>Outcome</strong><span>Recovery or escalation</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIGNS -->
+    <section class="tab-panel" id="tab-signs">
+      <div class="section-header">
+        <div class="sh-badge">🔍 Signs & Symptoms</div>
+        <h2 class="sh-title">Recognise the Warning Signs</h2>
+        <p class="sh-desc">Stress and anxiety show up in your body, mind, emotions, and behaviour.</p>
+      </div>
+      <div class="symptoms-grid">
+        <div class="symptom-group reveal">
+          <div class="sg-header"><span class="sg-icon">🧠</span><h3>Mental Signs</h3></div>
+          <div class="symptom-list">
+            <div class="symptom-item high">Racing &amp; intrusive thoughts</div>
+            <div class="symptom-item high">Constant worrying</div>
+            <div class="symptom-item medium">Difficulty concentrating</div>
+            <div class="symptom-item medium">Memory problems</div>
+            <div class="symptom-item low">Indecisiveness</div>
+            <div class="symptom-item low">Negative self-talk</div>
+          </div>
+        </div>
+        <div class="symptom-group reveal">
+          <div class="sg-header"><span class="sg-icon">💪</span><h3>Physical Signs</h3></div>
+          <div class="symptom-list">
+            <div class="symptom-item high">Headaches &amp; migraines</div>
+            <div class="symptom-item high">Chest tightness / palpitations</div>
+            <div class="symptom-item medium">Muscle tension &amp; pain</div>
+            <div class="symptom-item medium">Sleep disturbances</div>
+            <div class="symptom-item low">Fatigue &amp; low energy</div>
+            <div class="symptom-item low">Digestive issues</div>
+          </div>
+        </div>
+        <div class="symptom-group reveal">
+          <div class="sg-header"><span class="sg-icon">😤</span><h3>Emotional Signs</h3></div>
+          <div class="symptom-list">
+            <div class="symptom-item high">Feeling overwhelmed</div>
+            <div class="symptom-item high">Irritability &amp; mood swings</div>
+            <div class="symptom-item medium">Loneliness &amp; isolation</div>
+            <div class="symptom-item medium">Low self-esteem</div>
+            <div class="symptom-item low">Apathy or emotional numbness</div>
+            <div class="symptom-item low">Unexplained sadness</div>
+          </div>
+        </div>
+        <div class="symptom-group reveal">
+          <div class="sg-header"><span class="sg-icon">🚶</span><h3>Behavioural Signs</h3></div>
+          <div class="symptom-list">
+            <div class="symptom-item high">Procrastination</div>
+            <div class="symptom-item high">Skipping classes</div>
+            <div class="symptom-item medium">Social withdrawal</div>
+            <div class="symptom-item medium">Changes in appetite</div>
+            <div class="symptom-item low">Nail biting / restlessness</div>
+            <div class="symptom-item low">Excessive screen time</div>
+          </div>
+        </div>
+      </div>
+      <div class="severity-legend">
+        <span class="leg high">🔴 High concern — act now</span>
+        <span class="leg medium">🟡 Moderate — monitor closely</span>
+        <span class="leg low">🟢 Mild — stay aware</span>
+      </div>
+      <div class="signs-image-row reveal">
+        <img src="images/brain.png" alt="Brain showing signs of stress" class="signs-img"/>
+        <div class="signs-note">
+          <h3>When to Seek Help Immediately</h3>
+          <p>If symptoms persist for more than 2 weeks, interfere with daily functioning, or include thoughts of self-harm — please reach out to a mental health professional or crisis line right away.</p>
+          <button class="btn-primary" onclick="switchTab('resources')">View Resources →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAUSES -->
+    <section class="tab-panel" id="tab-causes">
+      <div class="section-header">
+        <div class="sh-badge">⚡ Causes</div>
+        <h2 class="sh-title">Root Causes of Student Stress</h2>
+        <p class="sh-desc">Identifying what triggers stress is the first step to managing it.</p>
+      </div>
+      <div class="causes-list">
+        <div class="cause-item reveal-left" data-pct="88">
+          <div class="cause-left"><div class="cause-emoji">📚</div><div><h4>Academic Pressure</h4><p>Heavy workloads, exams, fear of failure, and high expectations.</p></div></div>
+          <div class="cause-right"><div class="cause-bar-bg"><div class="cause-bar-fill"><span>88%</span></div></div></div>
+        </div>
+        <div class="cause-item reveal-left" data-pct="80">
+          <div class="cause-left"><div class="cause-emoji">🌐</div><div><h4>Future Uncertainty</h4><p>Career anxiety, job market fears, unclear life goals.</p></div></div>
+          <div class="cause-right"><div class="cause-bar-bg"><div class="cause-bar-fill"><span>80%</span></div></div></div>
+        </div>
+        <div class="cause-item reveal-left" data-pct="72">
+          <div class="cause-left"><div class="cause-emoji">💰</div><div><h4>Financial Stress</h4><p>Tuition fees, student debt, living costs, and part-time work.</p></div></div>
+          <div class="cause-right"><div class="cause-bar-bg"><div class="cause-bar-fill"><span>72%</span></div></div></div>
+        </div>
+        <div class="cause-item reveal-left" data-pct="65">
+          <div class="cause-left"><div class="cause-emoji">👥</div><div><h4>Social Pressures</h4><p>Peer comparison, social media, fitting in, and bullying.</p></div></div>
+          <div class="cause-right"><div class="cause-bar-bg"><div class="cause-bar-fill"><span>65%</span></div></div></div>
+        </div>
+        <div class="cause-item reveal-left" data-pct="60">
+          <div class="cause-left"><div class="cause-emoji">📱</div><div><h4>Digital Overload</h4><p>Constant notifications, FOMO, and disrupted sleep from screens.</p></div></div>
+          <div class="cause-right"><div class="cause-bar-bg"><div class="cause-bar-fill"><span>60%</span></div></div></div>
+        </div>
+        <div class="cause-item reveal-left" data-pct="58">
+          <div class="cause-left"><div class="cause-emoji">🏠</div><div><h4>Home &amp; Family</h4><p>Family conflict, homesickness, and difficult living situations.</p></div></div>
+          <div class="cause-right"><div class="cause-bar-bg"><div class="cause-bar-fill"><span>58%</span></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COPING -->
+    <section class="tab-panel" id="tab-coping">
+      <div class="section-header">
+        <div class="sh-badge">🛡️ Coping</div>
+        <h2 class="sh-title">Coping Strategies &amp; Tools</h2>
+        <p class="sh-desc">Evidence-based techniques to manage stress and anxiety in daily student life.</p>
+      </div>
+      <div class="coping-grid">
+        <div class="coping-card reveal"><span class="cp-num">01</span><div class="cp-icon">🧘</div><h3>Mindfulness</h3><p>Even 5–10 min daily can rewire your brain's stress response. Try body scans, guided meditation, or mindful eating.</p><div class="cp-tag">Apps: Headspace, Calm</div></div>
+        <div class="coping-card reveal"><span class="cp-num">02</span><div class="cp-icon">🏃</div><h3>Exercise</h3><p>Releases endorphins. A 20-minute walk reduces cortisol significantly and boosts mood immediately.</p><div class="cp-tag">Goal: 30 min/day</div></div>
+        <div class="coping-card reveal"><span class="cp-num">03</span><div class="cp-icon">📓</div><h3>Journaling</h3><p>Writing externalises worries. Gratitude journaling trains the brain to notice the positive.</p><div class="cp-tag">Write 3 things daily</div></div>
+        <div class="coping-card reveal"><span class="cp-num">04</span><div class="cp-icon">⏰</div><h3>Time Management</h3><p>Use Pomodoro technique — 25 min focus + 5 min break. Reduces overwhelm through small steps.</p><div class="cp-tag">Pomodoro technique</div></div>
+        <div class="coping-card reveal"><span class="cp-num">05</span><div class="cp-icon">😴</div><h3>Sleep Hygiene</h3><p>Poor sleep amplifies stress. Keep consistent schedule, avoid screens 1 hour before bed.</p><div class="cp-tag">Aim: 7–9 hours/night</div></div>
+        <div class="coping-card reveal"><span class="cp-num">06</span><div class="cp-icon">🤝</div><h3>Social Support</h3><p>Talk to a trusted friend, family, or counsellor. Sharing burdens reduces their weight.</p><div class="cp-tag">Join support groups</div></div>
+      </div>
+      <div class="do-dont reveal">
+        <div class="do-block"><h3>✅ Healthy Coping</h3><ul><li>Talk about your feelings</li><li>Take regular breaks</li><li>Practice deep breathing</li><li>Maintain a daily routine</li><li>Eat balanced meals</li><li>Seek professional help</li></ul></div>
+        <div class="dont-block"><h3>❌ Avoid These</h3><ul><li>Isolating yourself</li><li>Excessive alcohol / substances</li><li>Binge-watching to escape</li><li>Skipping meals or overeating</li><li>Ignoring the problem</li><li>Lashing out at others</li></ul></div>
+      </div>
+    </section>
+
+    <!-- BREATHING -->
+    <section class="tab-panel" id="tab-breathing">
+      <div class="section-header">
+        <div class="sh-badge">🌬️ Breathe</div>
+        <h2 class="sh-title">Breathing Exercises</h2>
+        <p class="sh-desc">Calm your nervous system in minutes with these proven techniques.</p>
+      </div>
+      <div class="breathing-layout">
+        <div class="breath-left">
+          <img src="images/breathing.png" alt="Breathing exercise illustration" class="breath-img"/>
+          <div class="breath-techniques">
+            <button class="tech-btn active" data-technique="box">📦 Box Breathing</button>
+            <button class="tech-btn" data-technique="478">4-7-8 Method</button>
+            <button class="tech-btn" data-technique="belly">🫁 Belly Breathing</button>
+          </div>
+          <div class="tech-info">
+            <h4 id="techName">Box Breathing</h4>
+            <p id="techDesc">Used by Navy SEALs to stay calm under pressure. Inhale, hold, exhale, hold — each for 4 seconds.</p>
+          </div>
+        </div>
+        <div class="breath-right">
+          <div class="breath-circle-wrap">
+            <div class="breath-circle" id="breathCircle">
+              <div class="bc-inner">
+                <div class="breath-text" id="breathText">Press Start</div>
+                <div class="breath-sub" id="breathSub">Ready</div>
+              </div>
+            </div>
+          </div>
+          <div class="breath-controls">
+            <button class="btn-primary" id="startBreath">▶ Start</button>
+            <button class="btn-outline" id="stopBreath" style="display:none">⏹ Stop</button>
+          </div>
+          <div class="cycle-info">Cycles completed: <span id="cycleCount">0</span></div>
+          <div class="breath-steps" id="breathSteps"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="tab-panel" id="tab-quiz">
+      <div class="section-header">
+        <div class="sh-badge">📝 Self-Check</div>
+        <h2 class="sh-title">Stress &amp; Anxiety Self-Assessment</h2>
+        <p class="sh-desc">10 questions · Answer honestly · Not a medical diagnosis</p>
+      </div>
+      <div class="quiz-wrap">
+        <div id="quizContainer">
+          <div class="q-progress">
+            <div class="q-progress-bar"><div class="q-progress-fill" id="progressFill"></div></div>
+            <span id="progressLabel">Question 1 of 10</span>
+          </div>
+          <div class="question-card" id="questionCard">
+            <div class="q-num" id="qNumber">Q1</div>
+            <p class="q-text" id="qText"></p>
+            <div class="q-options" id="qOptions"></div>
+          </div>
+          <button class="btn-primary" id="nextBtn" style="display:none">Next Question →</button>
+        </div>
+        <div class="quiz-result hidden" id="quizResult"></div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="tab-panel" id="tab-resources">
+      <div class="section-header">
+        <div class="sh-badge">📞 Help</div>
+        <h2 class="sh-title">Get Help &amp; Resources</h2>
+        <p class="sh-desc">You deserve support. Here's where to find it — no judgement, no stigma.</p>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card emergency reveal"><div class="rc-icon">🆘</div><h3>Crisis Support</h3><div class="rc-links"><a href="#" class="rc-link">📞 iCall India: 9152987821</a><a href="#" class="rc-link">📞 Vandrevala: 1860-2662-345</a><a href="#" class="rc-link">📞 AASRA: 9820466627</a><a href="#" class="rc-link">🌐 Crisis Text Line (Global)</a></div></div>
+        <div class="resource-card reveal"><div class="rc-icon">🏫</div><h3>On-Campus Support</h3><div class="rc-links"><a href="#" class="rc-link">🗣️ Student Counselling Centre</a><a href="#" class="rc-link">👩‍⚕️ Campus Health Clinic</a><a href="#" class="rc-link">📖 Peer Support Groups</a><a href="#" class="rc-link">🏋️ Wellness Workshops</a></div></div>
+        <div class="resource-card reveal"><div class="rc-icon">📱</div><h3>Helpful Apps</h3><div class="rc-links"><a href="#" class="rc-link">🧘 Headspace – Meditation</a><a href="#" class="rc-link">😌 Calm – Sleep &amp; Relax</a><a href="#" class="rc-link">📔 Daylio – Mood Journal</a><a href="#" class="rc-link">🤖 Woebot – CBT Chatbot</a></div></div>
+        <div class="resource-card reveal"><div class="rc-icon">📚</div><h3>Read &amp; Learn</h3><div class="rc-links"><a href="#" class="rc-link">📗 The Anxiety &amp; Worry Workbook</a><a href="#" class="rc-link">📘 Why Has Nobody Told Me This?</a><a href="#" class="rc-link">🌐 MindEd for Families</a><a href="#" class="rc-link">🎧 Feel Better, Live More Podcast</a></div></div>
+      </div>
+
+      <div class="myth-section reveal">
+        <h3>🧠 Myths vs Facts</h3>
+        <div id="mythGrid"></div>
+      </div>
+
+      <div class="affirmation-section reveal">
+        <h3>💬 Daily Affirmation</h3>
+        <div class="affirmation-card">
+          <div class="affirmation-text" id="affirmText"></div>
+          <button class="btn-primary" id="newAffirm">New Affirmation ✨</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="logo-title">Mind<span class="accent">Ease</span></span>
+      <p>Health Awareness for Stress &amp; Anxiety in Students</p>
+    </div>
+    <p class="footer-note">⚠️ This website is for educational awareness only and does not constitute medical advice. If you are in crisis, please contact a qualified mental health professional immediately.</p>
+    <p class="footer-copy">© 2025 MindEase · Built with care for student wellbeing 💜</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
+
